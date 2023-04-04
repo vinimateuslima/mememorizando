@@ -1,0 +1,44 @@
+.row {
+    height: 100vh;
+}
+
+.form_container {
+    width: 20%;
+}
+
+p {
+    font-size: 8px;
+    color: #616161;
+    margin-top: 10px;
+}
+
+form#form-cadastro div{
+    margin-top: 20px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active {
+    background-color: #ee665c;
+    border-color: #ee665c;
+    border-radius: 8px;
+    color: #ffffff;
+    --bs-btn-active-bg: #ee665c;
+    --bs-btn-active-border-color: #ee665c;
+}
+
+.btn {
+    font-size: 0.7em;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    padding: 8px 12px;
+}
+
+.btn-primary:disabled {
+    background-color: #eee;
+    color: #aaa;
+    border-color: #eee;
+    cursor: auto;
+
+}

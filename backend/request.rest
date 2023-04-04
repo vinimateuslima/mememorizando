@@ -1,0 +1,29 @@
+POST http://localhost:3000/api/usuarios
+Content-Type: application/json
+
+{
+    "nome": "João",
+    "login": "vinicius",
+    "senha": "123456",
+    "pontuacao": 100
+}
+
+###
+GET http://localhost:3000/api/usuarios
+
+###
+GET http://localhost:3000/api/usuarios/vinicius
+
+###
+DELETE http://localhost:3000/api/usuarios/6425cbe02d8b3bd3e618d9e4
+
+###
+PUT http://localhost:3000/api/usuarios/6425cbe02d8b3bd3e618d9e4
+Content-Type: application/json
+
+{
+    "nome": "Vinicius",
+    "login": "vinicius",
+    "senha": "123456",
+    "pontuacao": 100
+}
