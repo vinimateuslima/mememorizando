@@ -18,12 +18,21 @@ GET http://localhost:3000/api/usuarios/vinicius
 DELETE http://localhost:3000/api/usuarios/6425cbe02d8b3bd3e618d9e4
 
 ###
-PUT http://localhost:3000/api/usuarios/6425cbe02d8b3bd3e618d9e4
+PUT http://localhost:3000/api/usuarios/642e0a01aafeec0a5466727e
 Content-Type: application/json
 
 {
-    "nome": "Vinicius",
+    "nome": "vinicius",
     "login": "vinicius",
     "senha": "123456",
     "pontuacao": 100
+}
+
+###
+POST http://localhost:3000/api/usuarioLogin
+Content-Type: application/json
+
+{
+    "login": "vinicius",
+    "senha": "123456"
 }
