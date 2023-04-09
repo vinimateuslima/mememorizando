@@ -1,0 +1,30 @@
+.container {
+    margin-top: 100px;
+}
+
+.segundo_lugar img, .terceiro_lugar img{
+    width: 150px;
+}
+
+.primeiro_lugar img {
+    width: 300px;
+}
+
+.segundo_lugar p, .terceiro_lugar p, .primeiro_lugar p {
+    margin-top: 10px;
+}
+
+.segundo_lugar, .terceiro_lugar {
+    padding-top: 150px;
+}
+
+table#tbl-ranking {
+    margin-top: 50px;
+}
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+}
