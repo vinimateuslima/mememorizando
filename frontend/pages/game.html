@@ -8,16 +8,31 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/game.css">
 
-
     <title>MEMEMORIZANDO</title>
 </head>
 <body>
-    <div class="grid">
- 
-   
 
-    </div>
+    <main>
+
+        <header class="menu">
+            <a href="../index.html"><button type="button">Voltar</button></a>
+            <button type="button" onclick="deslogar()">Sair</button>
+        </header>
+
+        <header class="principal">
+            <span class="player">Vinicius Lima</span>
+            <button type="button" class="reiniciar" onclick="location.reload()"><img src="../src/images/reset.png" alt="Reiniciar"></button>
+            <span>Tempo: <span class="timer">0</span></span>
+           </header>
+           
+        <div class="grid">
+     
+      
+    
+        </div>
+    </main>
 
     <script src="../js/game.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

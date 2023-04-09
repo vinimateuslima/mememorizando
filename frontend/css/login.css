@@ -67,3 +67,20 @@
     cursor: auto;
 
 }
+
+.link_cadastro {
+  width: 100%;
+  max-width: 300px;
+  font-size: 9.5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.link_cadastro a{
+  color: #333;
+  text-decoration: none;
+}
+
+.link_cadastro a:hover{
+  color: #ee665c;
+}

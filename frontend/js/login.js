@@ -3,6 +3,42 @@ const senha = document.querySelector(".login_senha");
 const button = document.querySelector(".login_button");
 const form = document.querySelector(".login-form");
 let inputs = document.querySelectorAll("input");
+let player = localStorage.getItem("player");
+
+console.log(player);
+
+if (player) {
+  if (player != "") {
+    
+    async function redirecionamento () {
+      let timerInterval
+    await Swal.fire({
+      title: 'Você ja está logado!',
+      html: 'Será redirecionado...',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        timerInterval = setInterval(() => {
+        }, 2000)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+        window.location = "http://localhost:3000/pages/game.html";
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('Eu fechei sozinho')
+      }
+    })
+    }
+
+    redirecionamento();
+    
+
+  }
+}
 
 const validarInput = () => {
   //Verificando se algum campo está preenchido com mais de 3 caracteres
@@ -24,53 +60,49 @@ const validarInput = () => {
 };
 
 const loginForm = (event) => {
-    event.preventDefault();
-    
-    const options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nome: nome.value,
-          login: login.value,
-          senha: senha.value,
-          pontuacao: 0,
-        }),
-      };
-    
-      fetch("http://localhost:3000/api/usuarios", options)
-        .then((response) => response.json())
-        .then(async (response) => {
-          if (response.success != true) {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Erro ao cadastrar login!",
-            });
-          } else {
-            await Swal.fire({
-              title: `Login criado com sucesso`,
-              icon: "success",
-              confirmButtonText: "Ir para login",
-              confirmButtonColor: "#ee665c",
-              showCancelButton: true,
-              cancelButtonText: `Fechar`,
-            }).then((result) => {
-              /* Read more about isConfirmed, isDenied below */
-              if (result.isConfirmed) {
-                window.location = "../index.html";
-              }
-            });
-    
-            nome.value = "";
-            login.value = "";
-            senha.value = "";
-          }
-        })
-        .catch((err) => console.error(err));
-        
-    localStorage.setItem("player", input.value);
-    window.location = "pages/game.html";
+  event.preventDefault();
+
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      login: input.value,
+      senha: senha.value,
+    }),
   };
+
+  fetch("http://localhost:3000/api/usuarioLogin", options)
+    .then((response) => response.json())
+    .then(async (response) => {
+      if (response.success != true) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: response.msg,
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
+
+        await Toast.fire({
+          icon: "success",
+          title: "Logado com sucesso",
+        });
+
+        input.value = "";
+        senha.value = "";
+        localStorage.setItem("player", response.usuario.login);
+        localStorage.setItem("id", response.usuario._id);
+        window.location = "../pages/game.html";
+      }
+    })
+    .catch((err) => console.error(err));
+};
 
 input.addEventListener("input", validarInput);
 senha.addEventListener("input", validarInput);
