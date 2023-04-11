@@ -26,9 +26,11 @@ router.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
 });
 
+const port = process.env.PORT || 3000;
+
 app.use(express.static(path.join(__dirname, "..", "frontend")));
 app.use("/", router);
 app.use(express.json());
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("Servidor Online!");
 });
