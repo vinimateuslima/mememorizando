@@ -4,6 +4,8 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 
+app.use(cors());
+
 // Seus domínios permitidos devem estar aqui
 const allowedOrigins = ['http://mememorizando.herokuapp.com']; 
 const corsOption = {
