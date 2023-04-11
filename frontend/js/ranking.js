@@ -18,8 +18,7 @@ boasVindas();
 let primeiro = document.querySelector(".primeiro");
 let segundo = document.querySelector(".segundo");
 let terceiro = document.querySelector(".terceiro");
-const urlPadrao = "https://mememorizando.herokuapp.com";
-
+const urlPadrao = "https://mememorizando.herokuapp.com"
 // Recuperando o JSON das coletas através do método GET
 const options = { method: "GET" };
 
@@ -36,7 +35,8 @@ fetch(`${urlPadrao}/api/usuarios`, options)
     } else {
       // Percorrendo o objeto response.dados e atribuindo um array dentro do array dados
       for (let i = 0; i < response.usuarios.length; i++) {
-        dados[i] = [response.usuarios[i].login, response.usuarios[i].pontuacao];
+        // Verificando se a pontuação é maior que zero pois significa que não é usuário novo
+          dados[i] = [response.usuarios[i].login, response.usuarios[i].pontuacao]; 
       }
 
       // Atribuindo os 3 melhores ao top 3

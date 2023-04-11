@@ -37,7 +37,8 @@ const usuarioController = {
   // Listar Usuários
   getAll: async (req, res) => {
     try {
-      const usuarios = await UsuarioModel.find().sort({pontuacao: 1});
+      const usuarios = await UsuarioModel.find().where('pontuacao').gt(0).sort({pontuacao: 1});
+
 
       res.json({ usuarios: usuarios, success: true });
     } catch (error) {
