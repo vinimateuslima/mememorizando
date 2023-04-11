@@ -30,7 +30,7 @@ async function redirecionamento() {
     },
     willClose: () => {
       clearInterval(timerInterval);
-      window.location = "http://localhost:3000";
+      window.location = "http://mememorizando.herokuapp.com/" || "http://localhost:3000";
     },
   }).then((result) => {
     /* Read more about handling dismissals below */
