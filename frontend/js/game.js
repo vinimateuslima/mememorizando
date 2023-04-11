@@ -31,7 +31,7 @@ async function redirecionamento() {
     },
     willClose: () => {
       clearInterval(timerInterval);
-      window.location = urlPadrao || "http://localhost:3000";
+      window.location = urlPadrao;
     },
   }).then((result) => {
     /* Read more about handling dismissals below */
@@ -71,7 +71,7 @@ const salvarPontos = () => {
     }),
   };
 
-  fetch(`${urlPadrao}/api/usuarios/` + id || "http://localhost:3000/api/usuarios/" + id, options)
+  fetch(`${urlPadrao}/api/usuarios/` + id, options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
@@ -91,7 +91,7 @@ const salvarPontos = () => {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            window.open(`${urlPadrao}/pages/ranking.html` || `http://localhost:3000/pages/ranking.html`);
+            window.open(`${urlPadrao}/pages/ranking.html`);
           } else {
             location.reload();
           }
@@ -206,5 +206,5 @@ window.onload = () => {
 // Função de deslogar onde limpa o usuário do local storage e direciona para a página principal
 const deslogar = () => {
   localStorage.clear();
-  window.location = urlPadrao || "http://localhost:3000";
+  window.location = urlPadrao;
 };

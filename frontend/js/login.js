@@ -24,7 +24,7 @@ if (player) {
         },
         willClose: () => {
           clearInterval(timerInterval);
-          window.location = `${urlPadrao}/pages/game.html` || "http://localhost:3000/pages/game.html";
+          window.location = `${urlPadrao}/pages/game.html`;
         },
       }).then((result) => {
         /* Read more about handling dismissals below */
@@ -69,7 +69,7 @@ const loginForm = (event) => {
     }),
   };
 
-  fetch(`${urlPadrao}/api/usuarioLogin` || "http://localhost:3000/api/usuarioLogin", options)
+  fetch(`${urlPadrao}/api/usuarioLogin`, options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {

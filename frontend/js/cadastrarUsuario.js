@@ -46,7 +46,7 @@ form.addEventListener("submit", function (event) {
     }),
   };
 
-  fetch(`${urlPadrao}/api/usuarios` || "http://localhost:3000/api/usuarios", options)
+  fetch(`${urlPadrao}/api/usuarios`, options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
