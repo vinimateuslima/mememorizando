@@ -7,41 +7,38 @@ let player = localStorage.getItem("player");
 
 console.log(player);
 
+// Função para verificar se o usuário ja está logado, se sim, não poderá realizar o login novamente
 if (player) {
   if (player != "") {
-    
-    async function redirecionamento () {
-      let timerInterval
-    await Swal.fire({
-      title: 'Você ja está logado!',
-      html: 'Será redirecionado...',
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading()
-        timerInterval = setInterval(() => {
-        }, 2000)
-      },
-      willClose: () => {
-        clearInterval(timerInterval)
-        window.location = "http://localhost:3000/pages/game.html";
-      }
-    }).then((result) => {
-      /* Read more about handling dismissals below */
-      if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('Eu fechei sozinho')
-      }
-    })
+    async function redirecionamento() {
+      let timerInterval;
+      await Swal.fire({
+        title: "Você ja está logado!",
+        html: "Será redirecionado...",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+          timerInterval = setInterval(() => {}, 2000);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+          window.location = "http://localhost:3000/pages/game.html";
+        },
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("Eu fechei sozinho");
+        }
+      });
     }
 
     redirecionamento();
-    
-
   }
 }
 
+// Função para verificar se algum campo está preenchido com mais de 3 caracteres
 const validarInput = () => {
-  //Verificando se algum campo está preenchido com mais de 3 caracteres
   let inputsValidos = 0;
 
   for (let i = 0; i < inputs.length; i++) {
