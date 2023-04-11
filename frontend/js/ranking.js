@@ -7,7 +7,7 @@ const boasVindas = async () => {
   }).then(() => {
     const campeao = new Audio("../src/audios/ranking.mp3");
     campeao.play();
-    campeao.volume = 0.2;
+    campeao.volume = 0.1;
     campeao.loop = true;
   });
 }
