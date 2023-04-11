@@ -4,9 +4,7 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 
-app.use(cors({
-  origin: 'http://mememorizando.herokuapp.com'
-}));
+app.use(cors());
 
 app.use(express.json());
 
