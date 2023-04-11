@@ -113,3 +113,17 @@ header.principal{
     cursor: pointer;
     
 }
+
+@media (max-width: 400px) {
+    /* Seus estilos para telas menores que 400px */
+
+    header.principal {
+        font-size: 15px;
+    }
+
+    .reiniciar img {
+        width: 40px;
+        height: 40px;
+    }
+  }
+  
