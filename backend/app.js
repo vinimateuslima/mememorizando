@@ -24,11 +24,6 @@ app.use("/api", routes);
 // Página Principal
 router.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
-    res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
-  res.setHeader('Access-Control-Allow-Origin', 'http://mememorizando.herokuapp.com');
-res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-res.setHeader('Access-Control-Allow-Credentials', true);
 });
 
 const port = process.env.PORT || 3000;
