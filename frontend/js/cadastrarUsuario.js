@@ -5,8 +5,9 @@ let form = document.getElementById("form-cadastro");
 let botao = document.getElementById("cadastrar_button");
 let inputs = document.querySelectorAll("input");
 
+
+// Verificando se algum campo está preenchido com mais de 3 caracteres
 const validarInput = () => {
-  //Verificando se algum campo está preenchido com mais de 3 caracteres
 
   let inputsValidos = 0;
 
@@ -52,7 +53,7 @@ form.addEventListener("submit", function (event) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Erro ao cadastrar login!",
+          text: response.msg,
         });
       } else {
         await Swal.fire({
@@ -63,7 +64,6 @@ form.addEventListener("submit", function (event) {
           showCancelButton: true,
           cancelButtonText: `Fechar`,
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
             window.location = "../index.html";
           }
