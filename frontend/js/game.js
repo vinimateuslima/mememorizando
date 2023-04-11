@@ -3,6 +3,7 @@ const spanPlayer = document.querySelector(".player");
 const timer = document.querySelector(".timer");
 const ganhou = new Audio("../src/audios/ganhou.mp3");
 let player = localStorage.getItem("player");
+const urlPadrao = "https://mememorizando.herokuapp.com";
 
 const personagens = [
   "estevao",
@@ -30,7 +31,7 @@ async function redirecionamento() {
     },
     willClose: () => {
       clearInterval(timerInterval);
-      window.location = "http://mememorizando.herokuapp.com/" || "http://localhost:3000";
+      window.location = urlPadrao || "http://localhost:3000";
     },
   }).then((result) => {
     /* Read more about handling dismissals below */
@@ -70,7 +71,7 @@ const salvarPontos = () => {
     }),
   };
 
-  fetch("http://localhost:3000/api/usuarios/" + id, options)
+  fetch(`${urlPadrao}/api/usuarios/` || "http://localhost:3000/api/usuarios/" + id, options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
@@ -90,7 +91,7 @@ const salvarPontos = () => {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            window.open(`http://localhost:3000/pages/ranking.html`);
+            window.open(`${urlPadrao}/pages/ranking.html` || `http://localhost:3000/pages/ranking.html`);
           } else {
             location.reload();
           }
@@ -205,5 +206,5 @@ window.onload = () => {
 // Função de deslogar onde limpa o usuário do local storage e direciona para a página principal
 const deslogar = () => {
   localStorage.clear();
-  window.location = "http://localhost:3000";
+  window.location = urlPadrao || "http://localhost:3000";
 };

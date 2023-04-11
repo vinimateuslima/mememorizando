@@ -4,6 +4,7 @@ const button = document.querySelector(".login_button");
 const form = document.querySelector(".login-form");
 let inputs = document.querySelectorAll("input");
 let player = localStorage.getItem("player");
+const urlPadrao = "https://mememorizando.herokuapp.com";
 
 console.log(player);
 
@@ -23,7 +24,7 @@ if (player) {
         },
         willClose: () => {
           clearInterval(timerInterval);
-          window.location = "https://mememorizando.herokuapp.com/pages/game.html" || "http://localhost:3000/pages/game.html";
+          window.location = `${urlPadrao}/pages/game.html` || "http://localhost:3000/pages/game.html";
         },
       }).then((result) => {
         /* Read more about handling dismissals below */
@@ -68,7 +69,7 @@ const loginForm = (event) => {
     }),
   };
 
-  fetch("https://mememorizando.herokuapp.com/api/usuarioLogin" || "http://localhost:3000/api/usuarioLogin", options)
+  fetch(`${urlPadrao}/api/usuarioLogin` || "http://localhost:3000/api/usuarioLogin", options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {

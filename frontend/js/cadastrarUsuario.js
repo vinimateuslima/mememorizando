@@ -4,7 +4,7 @@ let senha = document.getElementById("senha_input");
 let form = document.getElementById("form-cadastro");
 let botao = document.getElementById("cadastrar_button");
 let inputs = document.querySelectorAll("input");
-
+const urlPadrao = "https://mememorizando.herokuapp.com";
 
 // Verificando se algum campo está preenchido com mais de 3 caracteres
 const validarInput = () => {
@@ -46,7 +46,7 @@ form.addEventListener("submit", function (event) {
     }),
   };
 
-  fetch("http://localhost:3000/api/usuarios", options)
+  fetch(`${urlPadrao}/api/usuarios` || "http://localhost:3000/api/usuarios", options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
