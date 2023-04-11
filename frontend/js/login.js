@@ -23,7 +23,7 @@ if (player) {
         },
         willClose: () => {
           clearInterval(timerInterval);
-          window.location = "http://localhost:3000/pages/game.html";
+          window.location = "https://mememorizando.herokuapp.com/pages/game.html" || "http://localhost:3000/pages/game.html";
         },
       }).then((result) => {
         /* Read more about handling dismissals below */
@@ -68,7 +68,7 @@ const loginForm = (event) => {
     }),
   };
 
-  fetch("http://localhost:3000/api/usuarioLogin", options)
+  fetch("https://mememorizando.herokuapp.com/api/usuarioLogin" || "http://localhost:3000/api/usuarioLogin", options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
