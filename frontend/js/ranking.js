@@ -1,3 +1,4 @@
+// Função que exibe mensagem de boas vindas e ao clicar em ok toca o áudio
 const boasVindas = async () => {
    Swal.fire({
     title: `Bem vindo a página de Ranking!`,
@@ -6,14 +7,14 @@ const boasVindas = async () => {
   }).then(() => {
     const campeao = new Audio("../src/audios/ranking.mp3");
     campeao.play();
-    campeao.volume = 0.7;
+    campeao.volume = 0.2;
     campeao.loop = true;
   });
 }
 
 boasVindas();
  
-
+// Pegando os elementos do ranking
 let primeiro = document.querySelector(".primeiro");
 let segundo = document.querySelector(".segundo");
 let terceiro = document.querySelector(".terceiro");

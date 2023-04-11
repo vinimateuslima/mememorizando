@@ -28,3 +28,7 @@ table#tbl-ranking {
     left: 0;
     
 }
+
+.swal2-title {
+    font-size: 1.5em!important;
+}
