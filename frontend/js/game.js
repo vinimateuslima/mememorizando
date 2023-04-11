@@ -71,7 +71,7 @@ const salvarPontos = () => {
     }),
   };
 
-  fetch(`${urlPadrao}/api/usuarios/` || "http://localhost:3000/api/usuarios/" + id, options)
+  fetch(`${urlPadrao}/api/usuarios/` + id || "http://localhost:3000/api/usuarios/" + id, options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
