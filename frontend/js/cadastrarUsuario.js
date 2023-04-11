@@ -46,7 +46,7 @@ form.addEventListener("submit", function (event) {
     }),
   };
 
-  fetch("http://mememorizando.herokuapp.com/api/usuarios", options)
+  fetch("http://mememorizando.herokuapp.com/api/usuarios" || "http://localhost:3000/api/usuarioLogin", options)
     .then((response) => response.json())
     .then(async (response) => {
       if (response.success != true) {
