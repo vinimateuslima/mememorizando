@@ -23,7 +23,7 @@ if (player) {
         },
         willClose: () => {
           clearInterval(timerInterval);
-          window.location = "https://mememorizando.herokuapp.com/pages/game.html" || "http://localhost:3000/pages/game.html";
+          window.location = "https://mememorizando.herokuapp.com/pages/game.html";
         },
       }).then((result) => {
         /* Read more about handling dismissals below */
