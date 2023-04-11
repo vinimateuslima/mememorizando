@@ -124,7 +124,7 @@ const checkCards = () => {
     secondCard.firstChild.classList.add("disabled-card");
 
     const audio = new Audio(`../src/audios/${firstCharacter}.mp3`);
-
+    audio.volume = 0.5;
     audio.play();
 
     firstCard = "";
