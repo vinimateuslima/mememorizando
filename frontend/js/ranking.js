@@ -18,11 +18,12 @@ boasVindas();
 let primeiro = document.querySelector(".primeiro");
 let segundo = document.querySelector(".segundo");
 let terceiro = document.querySelector(".terceiro");
+const urlPadrao = "https://mememorizando.herokuapp.com";
 
 // Recuperando o JSON das coletas através do método GET
 const options = { method: "GET" };
 
-fetch("http://localhost:3000/api/usuarios", options)
+fetch(`${urlPadrao}/api/usuarios` || "http://localhost:3000/api/usuarios", options)
   .then((response) => response.json())
   .then((response) => {
     // Dados para popular a tabela
