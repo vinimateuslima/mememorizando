@@ -19,12 +19,17 @@ const usuarioSchema = new Schema({
         type: Number,
         required: true
     },
+    banido:{
+        type: Boolean,
+        required: true
+    }
     
 }, { timestamps: true}
 );
 
 const Usuario = mongoose.model("Usuario", usuarioSchema);
 
+//Exportando conexão
 module.exports = {
     Usuario,
     usuarioSchema
