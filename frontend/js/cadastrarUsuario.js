@@ -6,22 +6,6 @@ let botao = document.getElementById("cadastrar_button");
 let inputs = document.querySelectorAll("input");
 const urlPadrao = "http://mememorizando.herokuapp.com";
 
-
-  // Recaptcha V3
-  grecaptcha.ready(function () {
-  
-    var sitekey = document.getElementById('sitekey').getAttribute('data-sitekey')
-
-    grecaptcha
-      .execute(sitekey, { action: "submit" })
-      .then(function (token) {
-
-
-        console.log(token); 
-
-      });
-    });
-
 // Verificando se algum campo está preenchido com mais de 3 caracteres
 const validarInput = () => {
   let inputsValidos = 0;
@@ -49,6 +33,20 @@ senha.addEventListener("input", validarInput);
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  // Recaptcha V3
+  grecaptcha.ready(function () {
+  
+    var sitekey = document.getElementById('sitekey').getAttribute('data-sitekey')
+
+    grecaptcha
+      .execute(sitekey, { action: "submit" })
+      .then(function (token) {
+
+
+        console.log(token); 
+
+      });
+    });
         console.log("funcionou!");
 
         const options = {

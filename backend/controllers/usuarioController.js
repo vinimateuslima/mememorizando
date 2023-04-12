@@ -38,6 +38,7 @@ const usuarioController = {
   // Listar Usuários
   getAll: async (req, res) => {
     try {
+      // Buscando os usuários onde a pontuação é maior que 0 e não estão banidos
       const usuarios = await UsuarioModel.find().where('pontuacao').gt(0).where('banido').equals(false).sort({pontuacao: 1});
 
 

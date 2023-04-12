@@ -29,6 +29,7 @@ const usuarioSchema = new Schema({
 
 const Usuario = mongoose.model("Usuario", usuarioSchema);
 
+//Exportando conexão
 module.exports = {
     Usuario,
     usuarioSchema
