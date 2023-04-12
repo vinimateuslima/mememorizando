@@ -4,7 +4,7 @@ let senha = document.getElementById("senha_input");
 let form = document.getElementById("form-cadastro");
 let botao = document.getElementById("cadastrar_button");
 let inputs = document.querySelectorAll("input");
-const urlPadrao = "http://mememorizando.herokuapp.com";
+const urlPadrao = "https://mememorizando.herokuapp.com";
 
 // Verificando se algum campo está preenchido com mais de 3 caracteres
 const validarInput = () => {
