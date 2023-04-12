@@ -3,7 +3,7 @@ const spanPlayer = document.querySelector(".player");
 const timer = document.querySelector(".timer");
 const ganhou = new Audio("../src/audios/ganhou.mp3");
 let player = localStorage.getItem("player");
-const urlPadrao = "https://mememorizando.herokuapp.com";
+const urlPadrao = "http://localhost:3000";
 
 const personagens = [
   "estevao",

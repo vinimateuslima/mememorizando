@@ -19,6 +19,10 @@ const usuarioSchema = new Schema({
         type: Number,
         required: true
     },
+    banido:{
+        type: Boolean,
+        required: true
+    }
     
 }, { timestamps: true}
 );

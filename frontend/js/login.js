@@ -4,7 +4,7 @@ const button = document.querySelector(".login_button");
 const form = document.querySelector(".login-form");
 let inputs = document.querySelectorAll("input");
 let player = localStorage.getItem("player");
-const urlPadrao = "https://mememorizando.herokuapp.com";
+const urlPadrao = "http://localhost:3000";
 
 console.log(player);
 

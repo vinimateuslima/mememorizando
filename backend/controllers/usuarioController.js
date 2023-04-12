@@ -9,6 +9,7 @@ const usuarioController = {
         login: req.body.login,
         senha: req.body.senha,
         pontuacao: req.body.pontuacao,
+        banido: false
       };
 
       const buscarUsuario = await UsuarioModel.findOne({
@@ -37,7 +38,7 @@ const usuarioController = {
   // Listar Usuários
   getAll: async (req, res) => {
     try {
-      const usuarios = await UsuarioModel.find().where('pontuacao').gt(0).sort({pontuacao: 1});
+      const usuarios = await UsuarioModel.find().where('pontuacao').gt(0).where('banido').equals(false).sort({pontuacao: 1});
 
 
       res.json({ usuarios: usuarios, success: true });
@@ -92,6 +93,7 @@ const usuarioController = {
       login: req.body.login,
       senha: req.body.senha,
       pontuacao: req.body.pontuacao,
+      banido: req.body.banido,
     };
 
     const updatedUsuario = await UsuarioModel.findByIdAndUpdate(id, usuario);
@@ -119,9 +121,15 @@ const usuarioController = {
     });
 
     if (buscarUsuario) {
-
-      // Se o usuário existir, irá comprar as senhas
-      if (buscarUsuario.senha == usuario.senha) {
+      if (buscarUsuario.banido == true) {
+        res.status(403).json({
+          usuario: buscarUsuario,
+          success: false,
+          msg: "Você está banido temporariamente!",
+        });
+        
+        // Se o usuário existir, irá comprar as senhas
+      } else if (buscarUsuario.senha == usuario.senha) {
         res.status(201).json({
           usuario: buscarUsuario,
           success: true,
