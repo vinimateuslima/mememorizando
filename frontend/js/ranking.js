@@ -18,7 +18,7 @@ boasVindas();
 let primeiro = document.querySelector(".primeiro");
 let segundo = document.querySelector(".segundo");
 let terceiro = document.querySelector(".terceiro");
-const urlPadrao = "http://mememorizando.herokuapp.com"
+const urlPadrao = "https://mememorizando.herokuapp.com"
 // Recuperando o JSON das coletas através do método GET
 const options = { method: "GET" };
 
