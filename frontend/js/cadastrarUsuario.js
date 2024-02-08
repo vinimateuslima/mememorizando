@@ -4,7 +4,9 @@ let senha = document.getElementById("senha_input");
 let form = document.getElementById("form-cadastro");
 let botao = document.getElementById("cadastrar_button");
 let inputs = document.querySelectorAll("input");
-const urlPadrao = "https://mememorizando.herokuapp.com";
+
+//importando a url padrao
+const urlPadrao = config();
 
 // Verificando se algum campo está preenchido com mais de 3 caracteres
 const validarInput = () => {
@@ -22,7 +24,6 @@ const validarInput = () => {
     botao.setAttribute("disabled", "");
   }
 
-  console.log(inputsValidos);
 };
 
 nome.addEventListener("input", validarInput);
@@ -35,59 +36,52 @@ form.addEventListener("submit", function (event) {
 
   // Recaptcha V3
   grecaptcha.ready(function () {
-  
-    var sitekey = document.getElementById('sitekey').getAttribute('data-sitekey')
+    var sitekey = document
+      .getElementById("sitekey")
+      .getAttribute("data-sitekey");
 
-    grecaptcha
-      .execute(sitekey, { action: "submit" })
-      .then(function (token) {
-
-
-        console.log(token); 
-
-      });
+    grecaptcha.execute(sitekey, { action: "submit" }).then(function (token) {
     });
-        console.log("funcionou!");
+  });
 
-        const options = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            nome: nome.value,
-            login: login.value,
-            senha: senha.value,
-            pontuacao: 0,
-          }),
-        };
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      nome: nome.value,
+      login: login.value,
+      senha: senha.value,
+      pontuacao: 0,
+    }),
+  };
 
-        fetch(`${urlPadrao}/api/usuarios`, options)
-          .then((response) => response.json())
-          .then(async (response) => {
-            if (response.success != true) {
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: response.msg,
-              });
-            } else {
-              await Swal.fire({
-                title: `Login criado com sucesso`,
-                icon: "success",
-                confirmButtonText: "Ir para login",
-                confirmButtonColor: "#ee665c",
-                showCancelButton: true,
-                cancelButtonText: `Fechar`,
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  window.location = "../index.html";
-                }
-              });
+  fetch(`${urlPadrao}/api/usuarios`, options)
+    .then((response) => response.json())
+    .then(async (response) => {
+      if (response.success != true) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: response.msg,
+        });
+      } else {
+        await Swal.fire({
+          title: `Login criado com sucesso`,
+          icon: "success",
+          confirmButtonText: "Ir para login",
+          confirmButtonColor: "#ee665c",
+          showCancelButton: true,
+          cancelButtonText: `Fechar`,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location = "../index.html";
+          }
+        });
 
-              nome.value = "";
-              login.value = "";
-              senha.value = "";
-            }
-          })
-          .catch((err) => console.error(err));
-    
+        nome.value = "";
+        login.value = "";
+        senha.value = "";
+      }
+    })
+    .catch((err) => console.error(err));
 });

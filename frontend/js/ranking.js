@@ -1,24 +1,27 @@
 // Função que exibe mensagem de boas vindas e ao clicar em ok toca o áudio
 const boasVindas = async () => {
-   Swal.fire({
+  Swal.fire({
     title: `Bem vindo a página de Ranking!`,
-    confirmButtonText: 'OK',
-    confirmButtonColor: '#ee665c',
+    confirmButtonText: "OK",
+    confirmButtonColor: "#ee665c",
   }).then(() => {
     const campeao = new Audio("../src/audios/ranking.mp3");
     campeao.play();
     campeao.volume = 0.1;
     campeao.loop = true;
   });
-}
+};
 
 boasVindas();
- 
+
 // Pegando os elementos do ranking
 let primeiro = document.querySelector(".primeiro");
 let segundo = document.querySelector(".segundo");
 let terceiro = document.querySelector(".terceiro");
-const urlPadrao = "https://mememorizando.herokuapp.com"
+
+//importando a url padrao
+const urlPadrao = config();
+
 // Recuperando o JSON das coletas através do método GET
 const options = { method: "GET" };
 
@@ -36,7 +39,7 @@ fetch(`${urlPadrao}/api/usuarios`, options)
       // Percorrendo o objeto response.dados e atribuindo um array dentro do array dados
       for (let i = 0; i < response.usuarios.length; i++) {
         // Verificando se a pontuação é maior que zero pois significa que não é usuário novo
-          dados[i] = [response.usuarios[i].login, response.usuarios[i].pontuacao]; 
+        dados[i] = [response.usuarios[i].login, response.usuarios[i].pontuacao];
       }
 
       // Atribuindo os 3 melhores ao top 3

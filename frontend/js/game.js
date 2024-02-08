@@ -3,7 +3,9 @@ const spanPlayer = document.querySelector(".player");
 const timer = document.querySelector(".timer");
 const ganhou = new Audio("../src/audios/ganhou.mp3");
 let player = localStorage.getItem("player");
-const urlPadrao = "https://mememorizando.herokuapp.com";
+
+//importando a url padrao
+const urlPadrao = config();
 
 const personagens = [
   "estevao",
@@ -36,7 +38,6 @@ async function redirecionamento() {
   }).then((result) => {
     /* Read more about handling dismissals below */
     if (result.dismiss === Swal.DismissReason.timer) {
-      console.log("Eu fechei sozinho");
     }
   });
 }

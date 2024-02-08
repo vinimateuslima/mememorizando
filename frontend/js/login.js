@@ -4,9 +4,9 @@ const button = document.querySelector(".login_button");
 const form = document.querySelector(".login-form");
 let inputs = document.querySelectorAll("input");
 let player = localStorage.getItem("player");
-const urlPadrao = "https://mememorizando.herokuapp.com";
 
-console.log(player);
+//importando a url padrao
+const urlPadrao = config();
 
 // Função para verificar se o usuário ja está logado, se sim, não poderá realizar o login novamente
 if (player) {
