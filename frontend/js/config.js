@@ -1,5 +1,5 @@
 const config = () => {
-  return "http://localhost:3000"
+  return "https://mememorizando.vercel.app"
   
 }
 
